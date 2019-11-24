@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "DoubleSubscriptedArray.cpp"
+#include "DoubleSubscriptedArray.h"
 using namespace std;
 
 int main() 
