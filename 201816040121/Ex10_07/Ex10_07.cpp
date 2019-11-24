@@ -1,4 +1,4 @@
-//Ex10_7:BracketsTest.cpp
+//Ex10_7:DoubleSubscriptedArrayTest.cpp
 #include <iostream>
 #include <iomanip>
 #include <stdexcept>
