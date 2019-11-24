@@ -87,7 +87,7 @@ int &DoubleSubscriptedArray::operator()( int arrayRow, int arrayColumn )
     if ( arrayColumn < 0 || arrayColumn > column )
         throw out_of_range( "Column out of range" );
 
-    return ptr[ arrayRow * arrayColumn - 1 ]; // reference return
+    return ptr[ ( arrayRow - 1 ) * column + arrayColumn - 1 ]; // reference return
 } // end function operator()
 
 // overload bracket operator for const objects;
@@ -100,7 +100,7 @@ int DoubleSubscriptedArray::operator()( int arrayRow, int arrayColumn ) const
     if ( arrayColumn < 0 || arrayColumn > column )
         throw out_of_range( "Column out of range" );
 
-    return ptr[ arrayRow * arrayColumn - 1 ]; // returns copy of this element
+    return ptr[ ( arrayRow - 1 ) * column + arrayColumn - 1 ]; // returns copy of this element
 } // end function operator()
 
 // overload output operator for class DoubleSubscriptedArray
