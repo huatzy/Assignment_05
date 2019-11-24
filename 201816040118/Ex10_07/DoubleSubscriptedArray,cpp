@@ -1,0 +1,87 @@
+#include <iostream>
+#include "DoubleSubscriptedArray.h"
+using namespace std;
+DoubleSubscriptedArray::DoubleSubscriptedArray(int a,int b)
+{
+    x=a;
+    y=b;
+    ptr=new int[a*b];//初始化数据成员并建立数据
+}
+//输出数组
+ostream &operator<<(ostream &output,const DoubleSubscriptedArray &a)
+{
+    for(int i=0;i<a.x;i++)
+    {
+        for(int j=0;j<a.y;j++)
+        {
+            output<<a.ptr[i*a.y+j]<<' ';
+        }
+        output<<endl;
+    }
+    return output;
+}
+//输入数组
+istream &operator>>(istream &input,DoubleSubscriptedArray &a)
+{
+        for(int i=0;i<a.x;i++)
+    {
+        for(int j=0;j<a.y;j++)
+        {
+            input>>a.ptr[i*a.y+j];
+        }
+    }
+    return input;
+}
+const DoubleSubscriptedArray &DoubleSubscriptedArray::operator = (const DoubleSubscriptedArray & a)
+{
+   if(&a!=this)//如果两个数组不相等
+    {
+        if(x!=a.x||y!=a.y)
+        {
+            delete [] ptr;
+            x=a.x;
+            y=a.y;
+            ptr=new int[x*y]; //如果数组大小不相等就删除原数组并创建新数组
+        }
+        for(int i=0;i<x;i++)
+            for(int j=0;j<y;j++)
+                ptr[i*y+j]=a.ptr[i*y+j];//逐个赋值
+    }
+    return *this;
+}
+bool DoubleSubscriptedArray::operator==(const DoubleSubscriptedArray &a)const
+{
+     if(x!=a.x||y!=a.y)//如果数组大小不同
+     {
+         return false;
+     }
+     for(int i=0;i<a.x;i++)
+        for(int j=0;j<a.y;j++)
+            if(ptr[i*a.y+j]==a.ptr[i*a.y+j]) //逐个检查各数组元素是否相等
+                return true;
+}
+bool DoubleSubscriptedArray::operator!=(const DoubleSubscriptedArray &a)const
+{
+    if(&a!=this)
+        return true;
+    else
+        return false;
+}
+int &DoubleSubscriptedArray::operator()(int a,int b)
+{
+    if(a>x||b>y)  //如果传递参数非法
+    {
+        throw("Out of range");
+    }
+    else
+    return ptr[(a-1)*y+b-1];//调整输出
+}
+int &DoubleSubscriptedArray::operator()(int a,int b)const
+{
+    if(a>x||b>y)  //如果传递参数非法
+    {
+        throw("Out of range");
+    }
+    else
+    return ptr[(a-1)*y+b-1];  //调整输出
+}
