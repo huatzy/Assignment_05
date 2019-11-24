@@ -63,7 +63,7 @@ int &DoubleSubscriptedArray::operator()( int cross, int ver )
     if ( ver <= 0 || ver > vertical )
         throw out_of_range( "Vertical out of range" );
 
-    return ptr[ cross * ver - 1 ];
+    return ptr[ (cross-1)*vertical+ver-1 ];
 }//end function operator()
 
 int DoubleSubscriptedArray::operator()( int cross, int ver ) const
@@ -73,7 +73,7 @@ int DoubleSubscriptedArray::operator()( int cross, int ver ) const
     if ( ver <= 0 || ver > vertical )
         throw out_of_range( "Vertical out of range" );
 
-    return ptr[ cross * ver - 1 ];
+    return ptr[ (cross-1)*vertical+ver-1 ];
 }//end function operator()
 
 ostream &operator<<( ostream &output, const DoubleSubscriptedArray &a )
