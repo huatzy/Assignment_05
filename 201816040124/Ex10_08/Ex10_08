@@ -1,0 +1,36 @@
+#include <iostream>
+#include"Complex.h"
+using namespace std;
+
+int main()
+{
+    /*声明四个Complex对象*/
+    Complex x;
+    Complex y(4.3,8.2);
+    Complex z(3.3,1.1);
+    Complex a;
+    //输入a
+    cout<<"请按(realpart,imaginarypart)形式输入复数a"<<endl;
+    cin>>a;
+    /*显示x、y、z、a*/
+    cout<<"x:"<<x<<endl;
+    cout<<"y:"<<y<<endl;
+    cout<<"z:"<<z<<endl;
+    cout<<"a:"<<a<<endl;
+    /*分别令x等于y+z,y-z,y*z并输出*/
+    x=y+z;
+    cout<<"x=y+z:"<<endl;
+    cout<<x<<"="<<y<<"+"<<z<<endl;
+    x=y-z;
+    cout<<"x=y-z:"<<endl;
+    cout<<x<<"="<<y<<"-"<<z<<endl;
+    x=y*z;
+    cout<<"x=y*z:"<<endl;
+    cout<<x<<"="<<y<<"*"<<z<<endl;
+    /*y与a是否相等并输出*/
+    if(y==a)
+        cout<<"y==a"<<endl;
+    else
+        cout<<"y!=a"<<endl;
+    return 0;
+}//主函数结束
